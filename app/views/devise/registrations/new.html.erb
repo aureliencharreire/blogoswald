@@ -1,0 +1,83 @@
+<header class="intro-header" style="background-image: url(<%= asset_path 'identification.jpg' %>)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>S'enregistrer</h1>
+                    <hr class="small">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+		<div class="container">
+			<div class="row main">
+            <div class="form-font">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">BLOG</h1>
+	               		<hr/>
+	               	</div>
+	            </div>
+				<div class="main-login main-center">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
+                      <%= devise_error_messages! %>
+
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Votre nom</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <%= f.text_field :username, class: "form-control", placeholder:"Votre nom", id:"name" %>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Votre adress email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <%= f.email_field :email, class:"form-control", placeholder:"Votre email", autofocus: true %>
+
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Mot de passe</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <%= f.password_field :password , class:"form-control", placeholder: "Votre mot de passe (8 charactères minimum)", autocomplete: "off" %>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                    <%= f.password_field :password_confirmation , class: "form-control", name: "confirm", id: "confirm", placeholder:"Confirmez votre mot de passe", autocomplete: "off" %>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+                                   <%= f.submit "S'enregistrer", class: "btn btn-primary btn-lg btn-block login-button" %>
+						</div>
+						<div class="login-register">
+                            <%= render "devise/shared/links" %>
+				         </div>
+					</form>
+				</div>
+                <% end %>
+			</div>
+        </div>
+		</div>
+
+		<script type="text/javascript" src="assets/javascripts/bootstrap.js"></script>
+	</body>

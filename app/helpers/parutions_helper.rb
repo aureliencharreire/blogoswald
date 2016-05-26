@@ -1,0 +1,2 @@
+module ParutionsHelper
+end

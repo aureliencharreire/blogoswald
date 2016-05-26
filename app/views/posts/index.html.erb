@@ -1,0 +1,82 @@
+<header class="intro-header" style="background-image: url(<%= asset_path 'home_background.jpg' %>)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>BLOG</h1>
+                    <hr class="small">
+                    <span class="subheading">Toutes les tendances et actulaités du digital !</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<p id="notice"><%= notice %></p>
+
+<!-- Main Content -->
+
+
+<div class="container">
+    <% @posts.each do |post| %>
+    <div class="row">
+
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+                    <h2 class="post-title">
+                        <%= link_to post.title, post %>
+                    </h2>
+                    <h3 class="post-subtitle">
+                        <%= post.subtitle %>
+                    </h3>
+                </a>
+                <p class="post-meta"> publié le <%= post.created_at.strftime("%d %B %Y") %> par <%= post.user.username %> </p>
+                <% if user_signed_in?  %>
+                <% if post.user.id == current_user.id || current_user.admin == true %>
+                <ul class="list-inline text-center">
+                    <li><%= link_to 'Edit', edit_post_path(post) %></li>
+                    <li><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                </ul>
+                <% end %>
+                <% end %>
+            </div>
+
+            <% if post.id != @posts.last.id %>
+            <hr>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<% if user_signed_in?  %>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <ul class="pager">
+        <li class="next">
+            <%= link_to 'New Post', new_post_path %>
+        </li>
+    </ul>
+    <% end %>
+</div>
+
+</div>
+
+<hr>
+<!--
+###############################################################################################
+
+
+<% @posts.each do |post| %>
+<h2 class="title"><%= post.title %></h2>
+<p class="date">ajouté le : <%= post.created_at.strftime("%d %B %Y") %></p>
+<p class="body"><%= post.subtitle %></p>
+<p><%= link_to 'Show', post %></p>
+<% if user_signed_in?  %>
+<% if post.user.id == current_user.id || current_user.admin == true %>
+<p><%= link_to 'Edit', edit_post_path(post) %></p>
+<p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+<% end %>
+<br>
+<% end %>
+
+-->
